@@ -29,14 +29,9 @@ function getUrl(url, callback) {
         for (var i=0; i<imgUrls.length; i++) {
           var splitImg = imgUrls[i].split('/');
 
-          mkdirp('/wiki', function (err) {
-            if (err) console.error(err)
-            else console.log('directory created')
-          });
-
           var fileName = splitImg[splitImg.length - 1];
 
-          request(inputUrl).pipe(fs.createWriteStream(fileName));
+          request(imgUrls[i]).pipe(fs.createWriteStream(fileName));
         }
     }
   })
