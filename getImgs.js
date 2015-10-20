@@ -36,7 +36,7 @@ function getUrl(url, callback) {
 
         mkdirp('./'+newDir+'/', function (err) {
             if (err) console.error(err)
-            else console.log('pow!')
+            else console.log('Images successfully added to new directory' + ' ' + newDir + '.')
         });
 
     }
