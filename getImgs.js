@@ -26,13 +26,19 @@ function getUrl(url, callback) {
           }) 
         console.log(imgUrls);
 
+        var newDir = inputUrl.split("/")[2];
+
         for (var i=0; i<imgUrls.length; i++) {
-          var splitImg = imgUrls[i].split('/');
-
-          var fileName = splitImg[splitImg.length - 1];
-
-          request(imgUrls[i]).pipe(fs.createWriteStream(fileName));
+             var splitImg = imgUrls[i].split('/');
+             var fileName = splitImg[splitImg.length - 1];
+             request(imgUrls[i]).pipe(fs.createWriteStream('./'+newDir+'/'+fileName));
         }
+
+        mkdirp('./'+newDir+'/', function (err) {
+            if (err) console.error(err)
+            else console.log('pow!')
+        });
+
     }
   })
 };
